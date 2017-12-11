@@ -11,3 +11,11 @@ The bootcamp will be done on your personal laptop, connecting to an instance of 
 1. [Make sure your laptop has a JDK more recent than 1.8.0_101](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) , without at least this version you won't be able to connect to Confluent Cloud.  In addition to this version being installed it should also be the active java runtime for your maven (see step 3) and your IDE (see step 2)
 2. Your laptop should have your favorite IDE for java development (Intellij, Eclipse, Netbeans)
 3. Have command line maven [installed](https://maven.apache.org/download.cgi) and available for use on the command line 
+
+#### Preparing to get interact with Confluent Cloud
+1. Get connection details and credentials from the Cloud team (bootstrap servers list, schema registry server, api key(username), api secret(password))
+2. [Install ccloud](https://github.com/Zeus-Cloud-Team/confluent-cloud-cli), you'll need the information from step 1 to connect ccloud cli to the instance of Confluent Cloud we're using.  Once you connect familiarize yourself with administration of topics.
+3. You will have to follow these guidelines when using ccloud cli to administer Confluent Cloud Kafka- 
+  1. If part of a team select one person from the team and use that persons first name to prefix all topics you interact with
+  2. 
+**NOTE** There is only 1 account, so all participants will have the ability to modify every other topic
