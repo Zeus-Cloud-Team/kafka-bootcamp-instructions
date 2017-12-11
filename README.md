@@ -29,7 +29,7 @@ This bootcamp is not aimed at people who are not at all familiar with Kafka.  Co
 2. Reach out to the Cloud team to get more recommended reading material to prepare yourself
 1. [Download Kafka to run locally](https://www.confluent.io/download/) if you are on a non windows machine (don't try to run Kafka on windows), and try out the scenarios listed here.
 
-### The scenarios
+## The scenarios
 ### 1 - Event Sourcing
 ![Event Sourcing Diagram](pics/ca-kafka-event-sourcing.svg)
 
@@ -42,7 +42,7 @@ A new microservice (or external data source) is released and needs to be synchro
 * Kafka 
 * Kafka Schema Registry
 
-**Each team will need to develop the following (where <team> is the team name):**
+**Each team will need to develop the following:**
 1. Avro schema defining each of the 3 files
 1. Topic(s) on Kafka to publish/consume the data to/from (Topic naming should follow this naming structure (Team)-(dataset), for example login-transactions and login-customers where 'login'  is the team name and 'transactions' and 'customers' are the dataset name
 1. Event Producers microservices that read the system-of-record data (from files and publish to topic(s) on Kafka).  Use ccloud cli to create topics required (in order to simulate events, have the process sleep for a second or so in between pubishing each message)
@@ -56,4 +56,32 @@ A new microservice (or external data source) is released and needs to be synchro
 * Day-Zero Load - The microservice store must be initialized for the first time with a current state of the SOR store.
 * Real-time Updates - The microservice store must continuously updated with a current updates of the SOR store.
 * Bonus: Reconciliation - The SOR and microservice stores must be reconciled.
+
+### 2 - Business Rules
+![Business Rules](pics/ca-kafka-business-rules.svg)
+
+**When would I use this pattern?**
+
+A series of business rules must be applied in order to a series of data sets. Each rule is applied in sequence
+
+**Materials Provided:**
+
+Same as scenario 1
+
+**Each team will need to develop the following:**
+* appropriate schema and topics
+* appropriate producer(s)
+* Consumer microservice(s) that consume the published data
+  * somewhere here the data will need to be filtered (only keep transactions >= $1000)
+  * and then aggregation will need to be applied (for each customer show the last 30 seconds average transaction)
+  * the filtered data should be published to a new topic in avro format
+  * the aggregated data should be published to a new topic in avro format
+
+**Scenarios**
+* Business Rule Order - Filtering must occur before aggregation
+* Filtering - The filter rule selects all transactions greater than 1000 CAD and publishes result to topic.
+* Aggregation / Windowing - The aggregation rule provides a count, a total sum, an average sum of customer transactions over a 30-second hopping windows and publishes to a topic
+
+**This scenario is finished when**
+* Data from 3 source files are flowing into the consumer(s) which applies filtering and aggregation and is publishing those results back to topic(s) in real time
 
