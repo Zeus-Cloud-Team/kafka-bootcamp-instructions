@@ -71,6 +71,7 @@ Same as scenario 1
 **Each team will need to develop the following:**
 * appropriate schema and topics
 * appropriate producer(s)
+* Avro schema usage
 * Consumer microservice(s) that consume the published data
   * somewhere here the data will need to be filtered (only keep transactions >= $1000)
   * and then aggregation will need to be applied (for each customer show the last 30 seconds average transaction)
@@ -84,4 +85,26 @@ Same as scenario 1
 
 **This scenario is finished when**
 * Data from 3 source files are flowing into the consumer(s) which applies filtering and aggregation and is publishing those results back to topic(s) in real time
+
+### 3 - Live Reports
+
+![Live Reports diagram](pics/ca-kafka-live-reports.svg)
+
+**When would I use this pattern?**
+A live report of the current data streams produced in real-time.
+
+**Materials provided:**
+
+Same as scenario's 1 and 2
+
+**Each team will need to develop the following**
+* appropriate schema and topics
+* appropriate producer(s)
+* Avro schema usage
+* consumer microservice joins the different streams of datasets
+  * consumer produces a report that shows transactions along with the first and last name of the customer making the transaction
+  * use kafka ktables and ksql to join customer and transactions
+
+**Scenarios**
+* Stream joining - Join two streams of data that are flowing in, this is stream enrichment
 
