@@ -30,3 +30,5 @@ This bootcamp is not aimed at people who are not at all familiar with Kafka.  Co
 1. [Download Kafka to run locally](https://www.confluent.io/download/) if you are on a non windows machine (don't try to run Kafka on windows), and try out the scenarios listed here.
 
 ### The scenarios
+### 1 - Event Sourcing
+![Event Sourcing Diagram](pics/ca-kafka-event-sourcing.svg)
