@@ -28,6 +28,23 @@ This bootcamp is not aimed at people who are not at all familiar with Kafka.  Co
 2. [You should know about Avro and schemas](https://www.confluent.io/blog/avro-kafka-data/)
 2. Reach out to the Cloud team to get more recommended reading material to prepare yourself
 1. [Download Kafka to run locally](https://www.confluent.io/download/) if you are on a non windows machine (don't try to run Kafka on windows), and try out the scenarios listed here.
+5. Review the [bootcamp starter code](https://github.com/Zeus-Cloud-Team), clone it, build it, run it **but make sure you use your own topics to run it against**
+
+#### Is there any sample code I can start off with?
+1. Yes you can start off with the Kafka Bootcamp starter code
+    * [Starter producer code](https://github.com/Zeus-Cloud-Team/kafka-producer-starter)
+      * Contains the 3 data files in its /resources/data folder
+      * will connect to a on
+    * [Starter consumer code](https://github.com/Zeus-Cloud-Team/kafka-consumer-starter)
+2. During the bootcamp talk to your team and agree on a naming prefix for your teams topics (ie lojo-topicnames where 'lojo' is the team name)
+1. Use ccloud cli to create the required topics
+1. git clone the producer code
+  1. update its properties to include username and password (to be provided to you by cloud team) and a value for a local writable.dir
+  1. update the property value for topic name and group id to use your own topic and consumer groups (consumer groups get auto created so no need to pre-create them, but topics have to be created beforehand with ccloud cli)
+2. run it either from your IDE or from command line (see howToRun.sh for more details)
+3. the producer codebase has the 3 files used in the bootcamp in its local /resources/data dir, when you run the code it will convert each row of each file to an avro message and publish it to the topic defined
+4. apply the same changes to the consumer starter code and run it, you should see the same messages that are being produced getting consumed.  The consumer starter code base only comes with a listener for the transactions topic.
+1. These are starter code repos that're meant to be extended so make it your own and use it as a tool to help solve the use cases described below
 
 ## The scenarios
 ### 1 - Event Sourcing
@@ -44,7 +61,7 @@ A new microservice (or external data source) is released and needs to be synchro
 
 **Each team will need to develop the following:**
 1. Avro schema defining each of the 3 files
-1. Topic(s) on Kafka to publish/consume the data to/from (Topic naming should follow this naming structure (Team)-(dataset), for example login-transactions and login-customers where 'login'  is the team name and 'transactions' and 'customers' are the dataset name
+1. Topic(s) on Kafka to publish/consume the data to/from (Topic naming should follow this naming structure (Team)-(dataset), for example lojo-transactions and lojo-customers where 'lojo' is the team name and 'transactions' and 'customers' are the dataset name
 1. Event Producers microservices that read the system-of-record data (from files and publish to topic(s) on Kafka).  Use ccloud cli to create topics required (in order to simulate events, have the process sleep for a second or so in between pubishing each message)
 1. Consumer microservices that read the topics and consume the messages in real time and flush the results out to files.
 1. The consumer(s) and producer(s) use Avro format to send the data in, and the Avro schemas are being tracked with the schema registry
@@ -106,5 +123,8 @@ Same as scenario's 1 and 2
   * use kafka ktables and ksql to join customer and transactions
 
 **Scenarios**
-* Stream joining - Join two streams of data that are flowing in, this is stream enrichment
+* Stream enrichment - Join two streams of data that are flowing in
+* KSQL - this is using a new technology from Confluent, although you could achieve the result but using java and data structures, bonus points to you if you can achieve this using ktables and ksql
+
+
 
