@@ -16,6 +16,6 @@ The bootcamp will be done on your personal laptop, connecting to an instance of 
 1. Get connection details and credentials from the Cloud team (bootstrap servers list, schema registry server, api key(username), api secret(password))
 2. [Install ccloud](https://github.com/Zeus-Cloud-Team/confluent-cloud-cli), you'll need the information from step 1 to connect ccloud cli to the instance of Confluent Cloud we're using.  Once you connect familiarize yourself with administration of topics.
 3. You will have to follow these guidelines when using ccloud cli to administer Confluent Cloud Kafka- 
-  1. If part of a team select one person from the team and use that persons first name to prefix all topics you interact with
-  2. 
+  * If part of a team select one person from the team and use that persons first name to prefix all topics you interact with
+  * NEVER modify a topic that you do not own, or are working on as part of a team
 **NOTE** There is only 1 account, so all participants will have the ability to modify every other topic
