@@ -14,7 +14,7 @@ The bootcamp will be done on your personal laptop, connecting to an instance of 
 1. Alternatively, you could [install and run Kafka locally](https://www.confluent.io/download/) and use that during the bootcamp as long as you're not using windows, there's nothing special about Confluent Cloud Kafka that you can't get by running locally.
 
 #### Setup Confluent Cloud
-1. Get connection details and credentials from the Cloud team (bootstrap servers list, schema registry server, api key(username), api secret(password))
+1. Get connection details and credentials from the Cloud team (bootstrap servers list, schema registry server, api key(username), api secret(password)).  [Boostrap and registry servers](https://github.com/Zeus-Cloud-Team/kafka-bootcamp-instructions/blob/master/connection-info.yml).  API key and username will be provided during Hackathon or email the adoption team if you want to get started early.
 2. [Install ccloud](https://github.com/Zeus-Cloud-Team/confluent-cloud-cli), you'll need the information from step 1 to connect ccloud cli to the instance of Confluent Cloud we're using.  Once you connect familiarize yourself with administration of topics.
 3. You will have to follow these guidelines when using ccloud cli to administer Confluent Cloud Kafka
    * If part of a team select one person from the team and use that persons first name to prefix all topics you interact with
